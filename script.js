@@ -25,6 +25,8 @@ function addToCart(content_id, name, price) {
     currency: 'USD',
   }));
 
+  alert("Pixel AddToCart tracked");
+
   // Get cart from localStorage
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -106,7 +108,6 @@ function submitPurchase(event) {
 
   // Send Purchase event to TikTok Pixel
   track(ttq.track('CompletePayment'));
-  alert("Pixel CompletePayment tracked.");
 
   // Clear cart from localStorage
   localStorage.removeItem('cart');
@@ -121,7 +122,7 @@ function submitPurchase(event) {
   document.getElementById('expirationDate').value = '';
   document.getElementById('securityCode').value = '';
 
-  alert("Order confirmed!")
+  alert("Order confirmed! Pixel CompletePayment tracked.")
 }
 
 function trackPaymentInfo() {
