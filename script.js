@@ -174,13 +174,14 @@ function sendEvents() {
     if (!response.ok) {
       throw new Error('Failed to send events to server');
     }
+    
+    events.length = 0;
   })
   .catch(error => {
     console.error(error);
     console.error('Error sending events:', error);
   })
   .finally(() => {
-    events = events.slice(1000);
     sendEvents();
     console.log('Events sent successfully');
   });
